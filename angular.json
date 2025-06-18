@@ -11,6 +11,7 @@
       "prefix": "app",
       "architect": {
         "build": {
+          "outputPath": "dist/professor-app-frontend",
           "builder": "@angular/build:application",
           "options": {
             "tsConfig": "tsconfig.app.json",
