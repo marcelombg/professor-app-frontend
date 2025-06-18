@@ -1,0 +1,191 @@
+<div class="aprendizado-container">
+  <h2>Manage Learning Records</h2>
+  
+  <!-- Filtros -->
+  <div class="filter-section">
+    <h3>Filters</h3>
+    <div class="filter-group">
+      <div class="filter-item">
+        <label>Filter by Student:</label>
+        <select [(ngModel)]="filtroAlunoId" class="form-control">
+          <option [value]="null">All students</option>
+          <option *ngFor="let aluno of alunos" [value]="aluno.id">
+            {{ aluno.nome }}
+          </option>
+        </select>
+      </div>
+      
+      <div class="filter-item">
+        <label>Filter by Topic:</label>
+        <select [(ngModel)]="filtroTopicoId" class="form-control">
+          <option [value]="null">All topics</option>
+          <option *ngFor="let topico of topicos" [value]="topico.id">
+            {{ topico.nome }}
+          </option>
+        </select>
+      </div>
+      
+      <div class="filter-actions">
+        <button (click)="aplicarFiltros()" class="btn btn-primary">
+          Apply Filters
+        </button>
+        <button (click)="limparFiltros()" class="btn btn-secondary">
+          Clear Filters
+        </button>
+        <button (click)="exportarExcel()" class="btn btn-success">
+          Export Excel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulário para adicionar novo aprendizado -->
+  <div class="form-section" *ngIf="!editandoAprendizado">
+    <h3>Register New Learning Record</h3>
+    <div class="form-group">
+      <div class="form-row">
+        <div class="form-item">
+          <label>Aluno:</label>
+          <select [(ngModel)]="novoAprendizado.alunoId" class="form-control" required>
+            <option value="0">Select a student</option>
+            <option *ngFor="let aluno of alunos" [value]="aluno.id">
+              {{ aluno.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-item full-width">
+          <label>Learning Description:</label>
+          <textarea 
+            [(ngModel)]="novoAprendizado.descricao" 
+            placeholder="Describe the student's learning progress in detail..."
+            class="form-control textarea"
+            rows="4"
+            required>
+          </textarea>
+        </div>
+      </div>
+      
+      <div class="form-row" *ngIf="topicos.length > 0">
+        <div class="form-item full-width">
+          <label>Topics (opcional):</label>
+          <div class="topicos-selection">
+            <div *ngFor="let topico of topicos" class="topico-checkbox">
+              <input 
+                type="checkbox" 
+                [id]="'topico-' + topico.id"
+                [checked]="topicosSelecionados[topico.id]"
+                (change)="toggleTopico(topico.id)"
+              >
+              <label [for]="'topico-' + topico.id">{{ topico.nome }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button (click)="adicionarAprendizado()" class="btn btn-primary">
+          Register Learning Record
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulário de edição -->
+  <div class="form-section" *ngIf="editandoAprendizado">
+    <h3>Edit Learning Record</h3>
+    <div class="form-group">
+      <div class="form-row">
+        <div class="form-item">
+          <label>Student:</label>
+          <select [(ngModel)]="editandoAprendizado.dados.alunoId" class="form-control" required>
+            <option value="0">Select a student</option>
+            <option *ngFor="let aluno of alunos" [value]="aluno.id">
+              {{ aluno.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-item full-width">
+          <label>Learning Description:</label>
+          <textarea 
+            [(ngModel)]="editandoAprendizado.dados.descricao" 
+            class="form-control textarea"
+            rows="4"
+            required>
+          </textarea>
+        </div>
+      </div>
+      
+      <div class="form-row" *ngIf="topicos.length > 0">
+        <div class="form-item full-width">
+          <label>Tópicos (opcional):</label>
+          <div class="topicos-selection">
+            <div *ngFor="let topico of topicos" class="topico-checkbox">
+              <input 
+                type="checkbox" 
+                [id]="'edit-topico-' + topico.id"
+                [checked]="topicosSelecionados[topico.id]"
+                (change)="toggleTopico(topico.id)"
+              >
+              <label [for]="'edit-topico-' + topico.id">{{ topico.nome }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button (click)="salvarEdicao()" class="btn btn-primary">
+          Salvar Alterações
+        </button>
+        <button (click)="cancelarEdicao()" class="btn btn-secondary">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de aprendizados -->
+  <div class="list-section">
+    <h3>Learning Records List</h3>
+    <div *ngIf="loading" class="loading">Loading...</div>
+    
+    <div *ngIf="!loading && aprendizados.length === 0" class="no-data">
+      No learning records found.
+    </div>
+
+    <div *ngIf="!loading && aprendizados.length > 0" class="aprendizado-list">
+      <div *ngFor="let aprendizado of aprendizados" class="aprendizado-item">
+        <div class="aprendizado-header">
+          <div class="aprendizado-info">
+            <span class="aluno-nome">{{ aprendizado.alunoNome }}</span>
+            <span class="data-registro">{{ aprendizado.dataRegistro | date:'dd/MM/yyyy HH:mm' }}</span>
+          </div>
+          <div class="aprendizado-actions">
+            <button (click)="editarAprendizado(aprendizado)" class="btn btn-edit">
+              Edit
+            </button>
+            <button (click)="excluirAprendizado(aprendizado.id)" class="btn btn-delete">
+              Delete
+            </button>
+          </div>
+        </div>
+        
+        <div class="aprendizado-content">
+          <p class="descricao">{{ aprendizado.descricao }}</p>
+          
+          <div class="topicos-tags" *ngIf="aprendizado.topicos.length > 0">
+            <span class="topico-tag" *ngFor="let topico of aprendizado.topicos">
+              {{ topico.nome }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

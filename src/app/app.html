@@ -1,0 +1,19 @@
+<div class="app-container">
+  <header class="app-header">
+    <h1>{{ title }}</h1>
+    <nav class="app-nav">
+      <a routerLink="/aprendizados" routerLinkActive="active">Learning Records</a>
+      <a routerLink="/alunos" routerLinkActive="active">Students</a>
+      <a routerLink="/topicos" routerLinkActive="active">Topics</a>
+    </nav>
+  </header>
+  
+  <main class="app-main">
+    <router-outlet></router-outlet>
+  </main>
+  
+  <footer class="app-footer">
+    <p>&copy; 2025 Learning Management System for Teachers</p>
+  </footer>
+</div>
+

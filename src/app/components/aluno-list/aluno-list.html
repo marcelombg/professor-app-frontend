@@ -1,0 +1,75 @@
+<div class="aluno-container">
+  <h2>Manage Students</h2>
+  
+  <!-- Formulário para adicionar novo aluno -->
+  <div class="form-section">
+    <h3>Add New Student</h3>
+    <div class="form-group">
+      <input 
+        type="text" 
+        [(ngModel)]="novoAluno.nome" 
+        placeholder="Enter student name"
+        class="form-control"
+      >
+      <input 
+        type="date" 
+        [(ngModel)]="novoAluno.dataNascimento" 
+        class="form-control"
+      >
+      <button (click)="adicionarAluno()" class="btn btn-primary">
+        Add Student
+      </button>
+    </div>
+  </div>
+
+  <!-- Lista de alunos -->
+  <div class="list-section">
+    <h3>Students List</h3>
+    <div *ngIf="loading" class="loading">Loading...</div>
+    
+    <div *ngIf="!loading && alunos.length === 0" class="no-data">
+      No students registered.
+    </div>
+
+    <div *ngIf="!loading && alunos.length > 0" class="aluno-list">
+      <div *ngFor="let aluno of alunos" class="aluno-item">
+        <div *ngIf="editandoAluno?.id !== aluno.id" class="aluno-info">
+          <span class="aluno-nome">{{ aluno.nome }}</span>
+          <span class="aluno-data" *ngIf="aluno.dataNascimento">
+            ({{ aluno.dataNascimento | date:'dd/MM/yyyy' }})
+          </span>
+          <div class="aluno-actions">
+            <button (click)="editarAluno(aluno)" class="btn btn-edit">
+              Edit
+            </button>
+            <button (click)="excluirAluno(aluno.id)" class="btn btn-delete">
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <div *ngIf="editandoAluno?.id === aluno.id" class="aluno-edit">
+          <input 
+            type="text" 
+            [(ngModel)]="editandoAluno!.nome" 
+            class="form-control"
+          >
+          <input 
+            type="date" 
+            [(ngModel)]="editandoAluno!.dataNascimento" 
+            class="form-control"
+          >
+          <div class="edit-actions">
+            <button (click)="salvarEdicao()" class="btn btn-save">
+              Save
+            </button>
+            <button (click)="cancelarEdicao()" class="btn btn-cancel">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,62 @@
+<div class="topico-container">
+  <h2>Manage Topics</h2>
+  
+  <!-- Formulário para adicionar novo tópico -->
+  <div class="form-section">
+    <h3>Add New Topic</h3>
+    <div class="form-group">
+      <input 
+        type="text" 
+        [(ngModel)]="novoTopico.nome" 
+        placeholder="Nome do tópico"
+        class="form-control"
+      >
+      <button (click)="adicionarTopico()" class="btn btn-primary">
+        Add Topic
+      </button>
+    </div>
+  </div>
+
+  <!-- Lista de tópicos -->
+  <div class="list-section">
+    <h3>Topics List</h3>
+    <div *ngIf="loading" class="loading">Loading...</div>
+    
+    <div *ngIf="!loading && topicos.length === 0" class="no-data">
+      No topics registered.
+    </div>
+
+    <div *ngIf="!loading && topicos.length > 0" class="topico-list">
+      <div *ngFor="let topico of topicos" class="topico-item">
+        <div *ngIf="editandoTopico?.id !== topico.id" class="topico-info">
+          <span class="topico-nome">{{ topico.nome }}</span>
+          <div class="topico-actions">
+            <button (click)="editarTopico(topico)" class="btn btn-edit">
+              Edit
+            </button>
+            <button (click)="excluirTopico(topico.id)" class="btn btn-delete">
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <div *ngIf="editandoTopico?.id === topico.id" class="topico-edit">
+          <input 
+            type="text" 
+            [(ngModel)]="editandoTopico!.nome" 
+            class="form-control"
+          >
+          <div class="edit-actions">
+            <button (click)="salvarEdicao()" class="btn btn-save">
+              Save
+            </button>
+            <button (click)="cancelarEdicao()" class="btn btn-cancel">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

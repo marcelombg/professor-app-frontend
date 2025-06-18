@@ -1,0 +1,173 @@
+.topico-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-section {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-control {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-edit {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #1e7e34;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+.btn-save {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-save:hover {
+  background-color: #0056b3;
+}
+
+.btn-cancel {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-cancel:hover {
+  background-color: #545b62;
+}
+
+.list-section {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.loading, .no-data {
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+}
+
+.topico-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.topico-item {
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 15px;
+  background: #f8f9fa;
+}
+
+.topico-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topico-nome {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.topico-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.topico-edit {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+}
+
+h2, h3 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .form-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .topico-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .topico-edit {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+

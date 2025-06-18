@@ -1,0 +1,311 @@
+.aprendizado-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.filter-section {
+  background: #e9ecef;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: end;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.filter-item label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.form-section {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 200px;
+}
+
+.form-item.full-width {
+  flex: 1 1 100%;
+}
+
+.form-item label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-control {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.topicos-selection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+}
+
+.topico-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.topico-checkbox input[type="checkbox"] {
+  margin: 0;
+}
+
+.topico-checkbox label {
+  margin: 0;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  margin-top: 15px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #1e7e34;
+}
+
+.btn-edit {
+  background-color: #17a2b8;
+  color: white;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.btn-edit:hover {
+  background-color: #138496;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+.list-section {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.loading, .no-data {
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+}
+
+.aprendizado-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aprendizado-item {
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  background: #f8f9fa;
+}
+
+.aprendizado-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.aprendizado-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.aluno-nome {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.data-registro {
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.aprendizado-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.aprendizado-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.descricao {
+  margin: 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+.topicos-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topico-tag {
+  background-color: #007bff;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+h2, h3 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filter-item {
+    min-width: auto;
+  }
+  
+  .filter-actions {
+    justify-content: center;
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .form-item {
+    min-width: auto;
+  }
+  
+  .aprendizado-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .topicos-selection {
+    flex-direction: column;
+  }
+}
+
