@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Aluno } from '../models/aluno.model';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlunoService {
-  private apiUrl = 'https://professorapp.onrender.com/api/alunos';
-
+  private apiUrl = `${environment.apiUrl}/api/alunos`;
+  
   constructor(private http: HttpClient) { }
 
   getAlunos(): Observable<Aluno[]> {

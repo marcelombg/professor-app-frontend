@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Topico } from '../models/topico.model';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TopicoService {
-  private apiUrl = 'https://professorapp.onrender.com/api/topicos';
+  private apiUrl = `${environment.apiUrl}/api/topicos`;
 
   constructor(private http: HttpClient) { }
 

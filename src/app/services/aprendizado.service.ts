@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Aprendizado, AprendizadoDto } from '../models/aprendizado.model';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AprendizadoService {
-  private apiUrl = 'https://professorapp.onrender.com/api/aprendizados';
-
+  private apiUrl = `${environment.apiUrl}/api/aprendizados`;
+  
   constructor(private http: HttpClient) { }
 
   getAprendizados(alunoId?: number, topicoId?: number): Observable<Aprendizado[]> {
