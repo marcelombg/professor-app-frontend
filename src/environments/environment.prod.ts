@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://professorapp.onrender.com' // backend no Render
+  apiUrl: 'https://professorapp-production.up.railway.app' // backend no Railway
 };
